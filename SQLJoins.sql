@@ -32,11 +32,11 @@ WHERE c.Name = 'Appliances' OR c.name = 'Games';
  WHERE p.ProductID = 97;
 
 /* joins: find Product name, reviewer name, rating, and comment on the Visio TV. (only return for the lowest rating!) */
-SELECT p.Name AS 'Product Name', r.Reviewer AS 'Reviewer Name', r.Rating, r.Comment 
-FROM product AS p
+SELECT p.Name AS 'Products Name', MIN(r.Rating)
+FROM products AS p
 INNER JOIN reviews AS r ON r.ProductID = p.ProductID
-WHERE p.ProductID = 857 AND r.Rating = 1;
-
+WHERE p.ProductID = 857
+GROUP BY p.productID;
 -- ------------------------------------------ Extra - May be difficult
 /* Your goal is to write a query that serves as an employee sales report.
 This query should return:
